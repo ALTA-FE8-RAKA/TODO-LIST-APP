@@ -92,22 +92,26 @@ const Homepage = () => {
   return (
     <>
       <NavBar />
-      <form onSubmit={preventRefresh}>
-        <label htmlFor="inputTodo">Buat Todo List</label>
-        <br />
-        <input id="inputTodo" type="text" onChange={inputTodo} />
-        <br />
-        <button type="submit" onClick={() => createTodo()}>
-          Buat
-        </button>
-      </form>
-      {todo ? (
-        todo.map((item) => {
-          return <Card id={item.id} content={item.content} edit={() => handleEditPage(item)} handleDelete={() => handleDelete(item)} />;
-        })
-      ) : (
-        <></>
-      )}
+      <div className="flex flex-col self-center pt-4">
+        <form onSubmit={preventRefresh} className="flex flex-col self-center py-4">
+          <label htmlFor="inputTodo" className="text-center self-center font-bold text-ne">
+            Buat Todo List
+          </label>
+          <br />
+          <input id="inputTodo" type="text" onChange={inputTodo} className="shrink w-40 h-7 self-center border border-slate-500 rounded" />
+          <br />
+          <button type="submit" onClick={() => createTodo()} className="bg-blue-500 col px-3 py-1 rounded mb-2">
+            Buat
+          </button>
+        </form>
+        {todo ? (
+          todo.map((item) => {
+            return <Card id={item.id} content={item.content} edit={() => handleEditPage(item)} handleDelete={() => handleDelete(item)} />;
+          })
+        ) : (
+          <></>
+        )}
+      </div>
     </>
   );
 };

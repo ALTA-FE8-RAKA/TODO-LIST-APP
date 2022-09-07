@@ -44,15 +44,19 @@ const EditTodo = () => {
 
   return (
     <>
-      <p>{input}</p>
-      <form method="post" onSubmit={preventRefresh}>
-        <label htmlFor="changeContent">Ganti Todo Sebelumnya</label>
-        <br />
-        <input id="changeContent" type="text" onChange={changeContent} placeholder={location.state.content} />
-      </form>
-      <button type="submit" onClick={() => handleChange()}>
-        Ganti
-      </button>
+      <div className="flex flex-col self-center pt-4">
+        <form method="post" onSubmit={preventRefresh} className="flex flex-col self-center py-4">
+          <label htmlFor="changeContent" className="text-center self-center font-bold">
+            Ganti Todo Sebelumnya
+          </label>
+          <br />
+          <input id="changeContent" type="text" onChange={changeContent} placeholder={location.state.content} className="shrink w-40 h-7 self-center border border-slate-500 rounded" />
+          <br />
+          <button type="submit" onClick={() => handleChange()} className="bg-blue-500 col px-3 py-1 rounded mb-2">
+            Ganti
+          </button>
+        </form>
+      </div>
     </>
   );
 };
